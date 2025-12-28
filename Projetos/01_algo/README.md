@@ -1,44 +1,83 @@
-# Tech Layoffs: Data Cleaning & ETL Pipeline (Snowflake)
+# Tech Layoffs — End-to-End Data Cleaning & ETL Pipeline (Snowflake)
 
 Este projeto demonstra a construção de um pipeline completo de **Data Cleaning e ETL** utilizando **Snowflake** e a **Medallion Architecture (Bronze, Silver e Gold)**.  
 O objetivo é transformar dados brutos e inconsistentes sobre layoffs em um dataset **confiável, padronizado e pronto para análises analíticas e BI**.
 
 ## Objetivo do Projeto
-Limpar e padronizar um dataset com diversas inconsistências (valores nulos em formato de string, erros de digitação, duplicidade e falta de tipagem) para garantir a integridade dos dados antes de qualquer análise de negócio.
+- Limpar e padronizar dados reais com múltiplas inconsistências.
+- Garantir **qualidade, integridade e consistência** antes do consumo analítico.
+- Construir um pipeline **reprodutível, idempotente e auditável**.
+- Simular um cenário próximo ao ambiente produtivo de dados.
 
 ## Stack Tecnológica
-* **Plataforma:** Snowflake (Cloud Data Warehouse)
-* **Linguagem:** SQL (Common Table Expressions - CTEs)
-* **Estrutura:** Arquitetura Medalhão
+- **Plataforma:** Snowflake (Cloud Data Warehouse)
+- **Linguagem:** SQL (CTEs, Window Functions, Defensive SQL)
+- **Arquitetura:** Medallion Architecture (Bronze / Silver / Gold)
+
+> O Snowflake foi utilizado pela sua capacidade de escalar transformações analíticas e permitir pipelines SQL robustos, organizados em camadas e fáceis de manter.
 
 ---
 
-## O Pipeline de Dados
+## 🔄 Arquitetura do Pipeline
 
-### 1. Camada Bronze (Raw)
-Representa os dados em seu estado original, carregados a partir do arquivo `STG_LAYOFFS_RAW`.
-* **Problemas Identificados:** Datas como strings, colunas numéricas com formato incorreto, presença de textos como `'null'` ou espaços vazios onde deveriam ser valores nulos reais.
+### 🟤 Camada Bronze — Raw
 
-### 2. Camada Silver (Conformed)
-Nesta etapa, apliquei as principais transformações de engenharia de dados através de CTEs encadeadas:
+Armazena os dados em seu estado original (`STG_LAYOFFS_RAW`), sem qualquer transformação.
 
-* **Padronização de Nulos:** Conversão de strings `'null'`, `'NULL'` e espaços em branco em `NULL` real através da função `TRIM`.
-* **Tipagem de Dados:** Conversão segura de tipos de dados usando `TRY_CAST` (para inteiros e floats) e `TRY_TO_DATE` para garantir que datas no formato `MM/DD/YYYY` fossem processadas corretamente.
-* **Normalização de Texto:** * Uso de `INITCAP()` para nomes de empresas, localizações e indústrias.
-    * Uso de `UPPER()` para a coluna de estágio (`Stage`), garantindo consistência visual.
-* **Imputação de Dados:** Preenchimento manual de setores ausentes para empresas específicas como Airbnb (Travel), Carvana (Transportation) e Juul (Consumer).
-* **Correção de Erros de Digitação:** Unificação de categorias de indústria (ex: transformar `Cryptocurrency` e `Crypto Currency` em apenas `Crypto`) e correção de nomes de países (ex: `United States.` para `United States`).
-* **Deduplicação:** Utilização da Window Function `ROW_NUMBER()` com `PARTITION BY` em todas as colunas para identificar e remover registros idênticos, mantendo apenas a entrada mais relevante.
-
-
-
-### 3. Camada Gold (Analytics/Fact)
-A camada final de entrega onde os dados estão prontos para o consumo:
-* **Filtro de Relevância:** Remoção de registros que não possuíam as métricas principais (`Total_Laid_Off` e `Percentage_Laid_Off`).
-* **Ordenação:** Dados organizados cronologicamente para facilitar análises históricas.
+**Principais problemas identificados:**
+- Datas armazenadas como strings.
+- Colunas numéricas com valores inválidos.
+- Strings como `'null'`, `'NULL'` e espaços vazios representando valores nulos.
+- Inconsistências de capitalização, digitação e categorização.
+- Registros duplicados.
 
 ---
 
+### ⚪ Camada Silver — Conformed
+
+Camada responsável pela **limpeza, padronização e aplicação de regras de negócio**.  
+As transformações foram implementadas utilizando **CTEs encadeadas**, garantindo **legibilidade, modularidade e facilidade de auditoria**.
+
+#### Principais Transformações
+
+- **Padronização de Nulos**  
+  Conversão de strings inválidas (`'null'`, `'NULL'`, espaços em branco) em `NULL` real utilizando `TRIM()`.
+
+- **Tipagem Defensiva de Dados**  
+  Uso de `TRY_CAST` e `TRY_TO_DATE` para evitar falhas no pipeline causadas por dados inesperados.
+
+- **Normalização de Texto**  
+  - `INITCAP()` para Company, Location, Industry e Country.  
+  - `UPPER()` para Stage, garantindo consistência visual.
+
+- **Imputação e Regras de Negócio**  
+  Preenchimento manual de indústrias ausentes para empresas específicas:
+  - Airbnb → Travel  
+  - Carvana → Transportation  
+  - Juul → Consumer  
+
+- **Correção de Inconsistências de Domínio**  
+  - Unificação de categorias (`Cryptocurrency`, `Crypto Currency` → `Crypto`).  
+  - Correção de nomes de países (`United States.` → `United States`).
+
+- **Deduplicação**  
+  Remoção de registros duplicados utilizando `ROW_NUMBER()` com `PARTITION BY` em todas as colunas relevantes, garantindo um resultado determinístico.
+
+---
+
+### 🟡 Camada Gold — Analytics
+
+Camada final otimizada para consumo analítico.
+
+- **Filtro de Relevância**  
+  Remoção de registros sem métricas essenciais (`Total_Laid_Off` e `Percentage_Laid_Off`).
+
+- **Organização Temporal**  
+  Dados organizados cronologicamente, facilitando análises históricas, dashboards e relatórios executivos.
+
+> A camada Gold está pronta para integração com ferramentas de BI como Power BI ou Tableau.
+
+---
 ## Estrutura do Script SQL
 
 O script foi desenvolvido utilizando **CTEs (Common Table Expressions)** para garantir que o código seja modular e fácil de ler:
