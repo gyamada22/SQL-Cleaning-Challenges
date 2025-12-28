@@ -3,10 +3,10 @@
 Este repositório reúne projetos práticos de **Data Cleaning e ETL em SQL**, focados em **dados reais e inconsistentes**, simulando cenários próximos a ambientes produtivos.
 
 Os projetos exploram técnicas de:
-- padronização e limpeza de dados
-- tipagem defensiva
-- aplicação de regras de negócio
-- organização de dados para consumo analítico
+- Padronização e limpeza de dados
+- Tipagem defensiva
+- Aplicação de regras de negócio
+- Organização de dados para consumo analítico
 
 ---
 
