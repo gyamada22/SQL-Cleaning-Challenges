@@ -2,8 +2,6 @@ USE ROLE ACCOUNTADMIN;
 
 USE DATABASE SQL_CHALLENGES;
 
-SELECT * FROM SQL_CHALLENGES.BRONZE.STG_LAYOFFS_RAW LIMIT 10;
-
 create or replace table silver_layoffs_conformed as 
 -- padronizar valores nulos e remover espaços em branco
 with cte1_standarize1 as (
