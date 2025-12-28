@@ -1,8 +1,9 @@
-USE ROLE ACCOUNTADMIN;
+use role accountadmin;
+use database sql_challenges;
 
-USE DATABASE SQL_CHALLENGES;
+create schema if not exists sql_challenges.silver;
 
-create or replace table silver_layoffs_conformed as 
+create or replace table sql_challenges.silver.silver_layoffs_conformed as
 -- padronizar valores nulos e remover espaços em branco
 with cte1_standarize1 as (
 select
