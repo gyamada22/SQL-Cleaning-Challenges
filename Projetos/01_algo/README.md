@@ -31,8 +31,6 @@ Armazena os dados em seu estado original (`STG_LAYOFFS_RAW`), sem qualquer trans
 - Inconsistências de capitalização, digitação e categorização.
 - Registros duplicados.
 
----
-
 ### ⚪ Camada Silver — Conformed
 
 Camada responsável pela **limpeza, padronização e aplicação de regras de negócio**.  
@@ -63,8 +61,6 @@ As transformações foram implementadas utilizando **CTEs encadeadas**, garantin
 - **Deduplicação**  
   Remoção de registros duplicados utilizando `ROW_NUMBER()` com `PARTITION BY` em todas as colunas relevantes, garantindo um resultado determinístico.
 
----
-
 ### 🟡 Camada Gold — Analytics
 
 Camada final otimizada para consumo analítico.
@@ -80,18 +76,19 @@ Camada final otimizada para consumo analítico.
 ---
 ## Estrutura do Script SQL
 
-O script foi desenvolvido utilizando **CTEs (Common Table Expressions)** para garantir que o código seja modular e fácil de ler:
+O pipeline da camada Silver foi organizado em CTEs, cada uma com uma responsabilidade clara:
 
-1.  `cte1_standarize1`: Limpeza técnica e conversão de tipos.
+1.  `cte1_standarize1`: Limpeza técnica e tipagem defensiva.
 2.  `cte2_standarize2`: Padronização estética e capitalização.
-3.  `cte3_imputation`: Aplicação de regras de negócio e correções manuais.
-4.  `cte4_deduplicate`: Limpeza de duplicatas.
+3.  `cte3_imputation`: Regras de negócio e imputações manuais.
+4.  `cte4_deduplicate`: Remoção de duplicatas.
 
 ---
 
 ## Lições Aprendidas
-* A importância de limpar os dados **antes** de tentar remover duplicatas (dados sujos impedem que o SQL identifique linhas iguais).
-* O uso de `TRY_CAST` como uma prática de defesa para evitar que o pipeline quebre com valores inesperados.
-* A organização em camadas (Bronze/Silver/Gold) facilita a manutenção e a auditoria dos dados.
 
----
+- Dados devem ser limpos **antes** da deduplicação para garantir resultados corretos.
+- `TRY_CAST` é essencial para pipelines robustos em ambientes com dados reais.
+- Separar limpeza técnica de regras de negócio melhora a clareza e escalabilidade do código.
+- A Medallion Architecture facilita auditoria, versionamento e crescimento do projeto.
+
