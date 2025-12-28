@@ -1,4 +1,3 @@
-
 use role accountadmin;
 use database sql_challenges;
 
