@@ -15,7 +15,7 @@ select
     total_laid_off,
     percentage_laid_off,
     funds_raised_millions
-from sql_challenges.public.silver_layoffs_conformed
+from sql_challenges.silver.silver_layoffs_conformed
 where total_laid_off is not null 
    or percentage_laid_off is not null
 order by layoff_date desc;
