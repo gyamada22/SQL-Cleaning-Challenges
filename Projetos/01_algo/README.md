@@ -1,20 +1,20 @@
-# 📊 Tech Layoffs: Data Cleaning & ETL Pipeline (Snowflake)
+# Tech Layoffs: Data Cleaning & ETL Pipeline (Snowflake)
 
 Este projeto demonstra a implementação de um pipeline de dados completo utilizando a **Arquitetura Medalhão** (Bronze, Silver e Gold) dentro do Snowflake. O foco principal foi a transformação de dados brutos de demissões (layoffs) em um dataset limpo, consistente e pronto para análise.
 
 
 
-## 🎯 Objetivo do Projeto
+## Objetivo do Projeto
 Limpar e padronizar um dataset com diversas inconsistências (valores nulos em formato de string, erros de digitação, duplicidade e falta de tipagem) para garantir a integridade dos dados antes de qualquer análise de negócio.
 
-## 🛠️ Stack Tecnológica
+## Stack Tecnológica
 * **Plataforma:** Snowflake (Cloud Data Warehouse)
 * **Linguagem:** SQL (Common Table Expressions - CTEs)
 * **Estrutura:** Arquitetura Medalhão
 
 ---
 
-## 🏗️ O Pipeline de Dados
+## O Pipeline de Dados
 
 ### 1. Camada Bronze (Raw)
 Representa os dados em seu estado original, carregados a partir do arquivo `STG_LAYOFFS_RAW`.
@@ -40,7 +40,7 @@ A camada final de entrega onde os dados estão prontos para o consumo:
 
 ---
 
-## 📂 Estrutura do Script SQL
+## Estrutura do Script SQL
 
 O script foi desenvolvido utilizando **CTEs (Common Table Expressions)** para garantir que o código seja modular e fácil de ler:
 
@@ -51,7 +51,7 @@ O script foi desenvolvido utilizando **CTEs (Common Table Expressions)** para ga
 
 ---
 
-## 💡 Lições Aprendidas
+## Lições Aprendidas
 * A importância de limpar os dados **antes** de tentar remover duplicatas (dados sujos impedem que o SQL identifique linhas iguais).
 * O uso de `TRY_CAST` como uma prática de defesa para evitar que o pipeline quebre com valores inesperados.
 * A organização em camadas (Bronze/Silver/Gold) facilita a manutenção e a auditoria dos dados.
