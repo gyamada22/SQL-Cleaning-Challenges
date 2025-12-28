@@ -1,21 +1,28 @@
-# SQL Data Cleaning Challenges
+# 🧹 SQL Data Cleaning Projects
 
-[![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/features/actions)
-[![BigQuery](https://img.shields.io/badge/BigQuery-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white)](https://cloud.google.com/bigquery)
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
-[![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
-[![Power BI](https://img.shields.io/badge/Power_BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=white)](https://powerbi.microsoft.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+Este repositório reúne projetos práticos de **Data Cleaning e ETL em SQL**, focados em **dados reais e inconsistentes**, simulando cenários próximos a ambientes produtivos.
 
-Um projeto de portfólio onde aplico técnicas avançadas de SQL para limpeza e transformação de dados do mundo real. Cada desafio envolve dados brutos de fontes públicas, processamento com SQL e automação completa via CI/CD.
+Os projetos exploram técnicas de:
+- padronização e limpeza de dados
+- tipagem defensiva
+- aplicação de regras de negócio
+- organização de dados para consumo analítico
 
-## 🎯 Objetivo
+---
 
-Demonstrar habilidades em:
-- **SQL Avançado** para data cleaning e transformações complexas
-- **Google BigQuery** para processamento em nuvem
-- **CI/CD com GitHub Actions** para automação de pipelines
-- **Docker** para ambientes reproduzíveis
-- **Documentação técnica** clara e profissional
+## 📂 Projetos
 
-## 🏗️ Arquitetura do Projeto
+### 01 — Tech Layoffs: End-to-End Data Cleaning & ETL Pipeline
+📌 **Status:** Concluído  
+📌 **Plataforma:** Snowflake  
+
+Projeto focado na construção de um pipeline completo de **Data Cleaning e ETL**, utilizando **Medallion Architecture (Bronze, Silver e Gold)**.
+
+👉 [Acessar README do projeto](https://github.com/gyamada22/SQL-Cleaning-Challenges/blob/main/Projetos/01_Tech_Layoffs/README.md)
+
+---
+
+## 🚧 Próximos Projetos
+Novos desafios de data cleaning serão adicionados progressivamente.
+
+---
