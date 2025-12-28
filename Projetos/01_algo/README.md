@@ -19,8 +19,7 @@
 
 ## 🔄 Arquitetura do Pipeline
 
-### 🟤 Camada Bronze — Raw
-
+### 🟤 [Camada Bronze](https://github.com/gyamada22/SQL-Cleaning-Challenges/blob/main/Projetos/01_algo/SQL-Snowflake-scripts/01_bronze_layer.sql) — Raw 
 Armazena os dados em seu estado original (`STG_LAYOFFS_RAW`), sem qualquer transformação.
 
 **Principais problemas identificados:**
@@ -30,7 +29,7 @@ Armazena os dados em seu estado original (`STG_LAYOFFS_RAW`), sem qualquer trans
 - Inconsistências de capitalização, digitação e categorização.
 - Registros duplicados.
 
-### ⚪ Camada Silver — Conformed
+### ⚪ [Camada Silver](https://github.com/gyamada22/SQL-Cleaning-Challenges/blob/main/Projetos/01_algo/SQL-Snowflake-scripts/02_silver_layer.sql) — Conformed
 
 Camada responsável pela **limpeza, padronização e aplicação de regras de negócio**.  
 As transformações foram implementadas utilizando **CTEs encadeadas**, garantindo **legibilidade, modularidade e facilidade de auditoria**.
@@ -60,7 +59,7 @@ As transformações foram implementadas utilizando **CTEs encadeadas**, garantin
 - **Deduplicação**  
   Remoção de registros duplicados utilizando `ROW_NUMBER()` com `PARTITION BY` em todas as colunas relevantes, garantindo um resultado determinístico.
 
-### 🟡 Camada Gold — Analytics
+### 🟡 [Camada Gold](https://github.com/gyamada22/SQL-Cleaning-Challenges/blob/main/Projetos/01_algo/SQL-Snowflake-scripts/03_gold_layer.sql) — Analytics
 
 Camada final otimizada para consumo analítico.
 
