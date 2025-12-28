@@ -14,7 +14,7 @@ O objetivo é transformar dados brutos e inconsistentes sobre layoffs em um data
 - **Linguagem:** SQL (CTEs, Window Functions, Defensive SQL)
 - **Arquitetura:** Medallion Architecture (Bronze / Silver / Gold)
 
-> A escolha do Snowflake se deu pela possibilidade de executar todo o pipeline sem billing ativo. A mesma estrutura funcionaria da mesma forma em BigQuery ou Redshift.
+> A escolha do Snowflake se deu pela possibilidade de executar todo o pipeline sem billing ativo. A mesma estrutura funcionaria da mesma forma em BigQuery ou Redshift com pequenas adaptações.
 ---
 
 ## 🔄 Arquitetura do Pipeline
