@@ -1,7 +1,7 @@
 # Tech Layoffs — End-to-End Data Cleaning & ETL Pipeline (Snowflake)
 
-Este projeto demonstra a construção de um pipeline completo de **Data Cleaning e ETL** utilizando **Snowflake** e a **Medallion Architecture (Bronze, Silver e Gold)**.  
-O objetivo é transformar dados brutos e inconsistentes sobre layoffs em um dataset **confiável, padronizado e pronto para análises analíticas e BI**.
+- Este projeto demonstra a construção de um pipeline completo de **Data Cleaning e ETL** utilizando **Snowflake** e a **Medallion Architecture (Bronze, Silver e Gold)**.  
+- O objetivo é transformar dados brutos e inconsistentes sobre layoffs em um dataset **confiável, padronizado e pronto para análises analíticas e BI**.
 
 ## Objetivo do Projeto
 - Limpar e padronizar dados reais com múltiplas inconsistências.
