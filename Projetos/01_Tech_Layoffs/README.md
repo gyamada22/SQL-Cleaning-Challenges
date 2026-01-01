@@ -17,7 +17,7 @@
 > A escolha do Snowflake se deu pela possibilidade de executar todo o pipeline sem billing ativo. A mesma estrutura funcionaria da mesma forma em BigQuery ou Redshift com pequenas adaptações.
 ---
 
-## 🔄 Arquitetura do Pipeline
+##  Arquitetura do Pipeline
 
 ### 🟤 [Camada Bronze](https://github.com/gyamada22/SQL-Cleaning-Challenges/blob/main/Projetos/01_Tech_Layoffs/SQL_Snowflake_scripts/01_bronze_layer.sql) — Raw 
 Armazena os dados em seu estado original (`STG_LAYOFFS_RAW`), sem qualquer transformação.
