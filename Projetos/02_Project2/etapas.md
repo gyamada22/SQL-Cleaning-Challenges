@@ -1,9 +1,27 @@
-Fase,Etapa,Ferramenta,O que deve ser feito?,Classificação
-1. Infra,Configuração de Ambiente,Docker,Criar o arquivo docker-compose.yaml para subir o Airflow e as dependências locais.,Diferencial
-1. Infra,Data Warehouse,Snowflake,"Criar as bases de dados e os schemas (BRONZE, SILVER, GOLD) via SQL.",Diferencial
-2. Ingestão,Extração e Load (EL),Python (Pandas),"Script para ler o CSV (Kaggle), renomear colunas e carregar na BRONZE.",Bibliotecas Python
-2. Ingestão,Orquestração Inicial,Apache Airflow,Criar a DAG que agenda e executa o script Python automaticamente.,Obrigatório
-3. Transform,Limpeza e Qualidade,dbt (SQL),"Criar modelos SQL para limpar nulos, duplicatas e padronizar o dado na SILVER.",Diferencial
-3. Transform,Regra de Negócio,dbt (SQL),Criar tabelas GOLD com métricas financeiras (ex: Cálculo de Risco de Crédito).,Diferencial
-4. Entrega,Insights Estratégicos,Power BI,Conectar na GOLD e criar visuais para suporte à decisão (ex: Aumento de limite).,Obrigatório
-4. Entrega,Documentação,dbt docs,Gerar o portal de linhagem de dados para mostrar como o dado fluiu.,Diferencial
+# 📅 Linha do Tempo: Projeto ID 233 (Setor Financeiro)
+
+## 🏗️ Fase 1: Fundação e Infraestrutura
+* **Docker** | *Diferencial*
+    * Configuração do arquivo `docker-compose.yaml` para subir o **Apache Airflow** e as dependências de ambiente.
+* **Snowflake** | *Diferencial*
+    * Criação da estrutura de bancos de dados e schemas (`BRONZE`, `SILVER`, `GOLD`) via SQL para recepção dos dados.
+
+## 📥 Fase 2: Ingestão e Orquestração
+* **Python (Bibliotecas Python: Pandas)** | *Diferencial*
+    * Desenvolvimento do script de "Ingestão Leve": leitura do CSV original, padronização técnica de colunas e carga na camada `BRONZE`.
+* **Apache Airflow** | **Obrigatório**
+    * Criação da primeira DAG para automatizar e agendar a execução do script de ingestão Python.
+
+## 🧠 Fase 3: Analytics Engineering
+* **dbt (SQL)** | *Diferencial*
+    * **Limpeza (Silver):** Modelagem SQL para tratamento de valores nulos, duplicatas e conformidade.
+    * **Negócio (Gold):** Construção de tabelas agregadas com métricas financeiras (ex: Score de Crédito).
+    * **Testes:** Implementação de testes automatizados de qualidade de dados via dbt.
+* **Apache Airflow** | **Obrigatório**
+    * Configuração da orquestração final: disparar o comando `dbt run` automaticamente após o sucesso da ingestão.
+
+## 📊 Fase 4: Entrega de Valor (Insights)
+* **Power BI** | **Obrigatório**
+    * Conexão com a camada `GOLD` do Snowflake para visualização dos dados tratados.
+* **Análise Estratégica** | **Obrigatório**
+    * Criação de visuais para analisar dados e gerar insights para suportar decisões estratégicas e operacionais (ex: análise de limite de crédito).
