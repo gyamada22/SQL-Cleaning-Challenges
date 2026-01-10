@@ -19,7 +19,7 @@ Antes de qualquer etapa prática de limpeza, adoto o seguinte padrão, que serve
 ### 3. Padronização de Colunas
 - Corrigir tipos de dados (ex.: `STRING` → `INT/DECIMAL/DATE`)  
 - Renomear colunas para `snake_case` ou nomes padronizados  
-- Remover espaços e caracteres especiais indesejados (initcap + trim)
+- Remover espaços e caracteres especiais indesejados (`INITCAP` + `TRIM`)
 - Padronizar valores nulos (`'', None, NULL, N/A`)  
 - Padronizar datas para um único formato  
 
