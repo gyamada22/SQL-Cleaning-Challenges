@@ -1,4 +1,4 @@
-# Limpeza de Dados - Dataset 01 - 09-01-2026
+# Limpeza de Dados 1 - Dataset - 09-01-2026
 
 ---
 
@@ -16,7 +16,7 @@
 
 ### 2. Remoção Inicial de Duplicatas
 - Remover registros **totalmente idênticos** em todas as colunas  
-- Reduz o volume de dados e otimiza o processamento das etapas seguintes  
+- Reduz o volume de dados e otimiza o processamento das etapas seguintes, especialmente em bases de grande porte.
 
 ### 3. Padronização de Colunas
 - Corrigir tipos de dados (ex.: `STRING` → `INT/DECIMAL/DATE`)  
