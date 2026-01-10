@@ -235,10 +235,3 @@ ORDER BY cnt DESC;
 - Garantia de integridade e unicidade das linhas  
 
 ---
-
-## 09 - README do Projeto
-![README](https://raw.githubusercontent.com/gyamada22/SQL-Cleaning-Challenges/main/Projetos/01_Data_Cleaning/images/readme.md)
-
-- Documento explicativo das etapas de limpeza  
-- Referência para replicação do processo ou análises futuras  
-- Registro das decisões e transformações aplicadas ao dataset  
