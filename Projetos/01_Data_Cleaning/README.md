@@ -1,10 +1,12 @@
-# Limpeza de Dados - Dataset 01
+# Limpeza de Dados - Dataset 01 - 09-01-2026
 
 ---
 
 ## 🔹 Padrão de Limpeza de Dados Utilizado
 
-Antes de qualquer etapa prática de limpeza, adoto o seguinte padrão, que serve como guia para manter consistência, rastreabilidade e qualidade dos dados:
+- Antes de qualquer etapa prática de limpeza, adoto o seguinte padrão, que serve como guia para manter consistência, rastreabilidade e qualidade dos dados
+- Este padrão pode ser ajustado ou expandido no futuro, à medida que eu aprenda novas técnicas ou enfrente diferentes tipos de datasets.
+
 
 ### 1. Entendimento da Base
 - Checar tipos de colunas e colunas nulas ou inúteis para o BI final  
