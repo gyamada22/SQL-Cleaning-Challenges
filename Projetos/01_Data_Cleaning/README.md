@@ -1,65 +1,80 @@
-# Limpeza de Dados - Dataset01
+# Limpeza de Dados - Dataset `vendas_sujas`
 
-## 1️⃣ USE ROLE e Setup do Database/Schema
-**Legenda:**  
-Define o **role de administração** e o **warehouse** para execução das queries. Cria o **database `treino_limpeza`** e o **schema `raw`**, preparando o ambiente para os dados.
+##  Setup Inicial
+![01 - Setup Inicial](https://raw.githubusercontent.com/gyamada22/SQL-Cleaning-Challenges/main/Projetos/01_Data_Cleaning/images/01.png)
 
----
-
-## 2️⃣ Criação da Tabela `vendas_sujas` e Inserção de Dados
-**Legenda:**  
-Cria a tabela **bruta**, com todas as colunas como `STRING`. Insere dados simulando **problemas reais**: duplicatas, nomes nulos, datas inconsistentes, unidades diferentes, porcentagens e valores numéricos como strings.
+- Configuração do ambiente no Snowflake  
+- Definição de `ROLE` e `WAREHOUSE`  
+- Criação de `DATABASE` e `SCHEMA`  
 
 ---
 
-## 3️⃣ STA1 – Remoção de Duplicadas Exatas
-**Legenda:**  
-Cria uma nova tabela **sem duplicadas perfeitas** (`SELECT DISTINCT *`). Esse passo limpa **registros 100% iguais** antes de qualquer transformação.
+## Inserção de Dados
+![Insercao de Dados](https://raw.githubusercontent.com/gyamada22/SQL-Cleaning-Challenges/main/Projetos/01_Data_Cleaning/images/Inserçao_dados.png)
+
+- Inserção de dados brutos com inconsistências simuladas  
+- Presença de duplicatas, valores nulos, formatos diferentes de datas, pesos e descontos  
+- Objetivo: simular problemas reais do dataset  
 
 ---
 
-## 4️⃣ STA2 – Padronização de Tipos
-**Legenda:**  
-Converte as colunas para os **tipos corretos**:  
-- `order_date` → DATE  
-- `quantity` → NUMBER  
-- `price` → DECIMAL  
-- `discount` → DECIMAL (removendo `%`)  
-- `weight` → DECIMAL (converte kg → g)  
+## 01 - STA1: Remoção de Duplicadas Exatas
+![STA1](https://raw.githubusercontent.com/gyamada22/SQL-Cleaning-Challenges/main/Projetos/01_Data_Cleaning/images/sta1.png)
 
-Essa etapa garante **consistência numérica e de datas**.
+- Utilização de `SELECT DISTINCT *`  
+- Remove duplicatas perfeitas  
+- Garante que registros idênticos permaneçam apenas uma vez  
 
 ---
 
-## 5️⃣ STA3 – Limpeza de Valores Negativos
-**Legenda:**  
-Substitui números negativos em `quantity`, `price`, `discount` e `weight` por `NULL`. Isso evita valores que não fazem sentido na análise, como quantidades ou descontos negativos.
+## 02 - STA2: Padronização de Tipos
+![STA2](https://raw.githubusercontent.com/gyamada22/SQL-Cleaning-Challenges/main/Projetos/01_Data_Cleaning/images/sta2.png)
+
+- Conversão de colunas para tipos corretos (`DATE`, `NUMBER`, `DECIMAL`)  
+- Padronização de formatos de datas e valores numéricos  
+- Tratamento de unidades (`kg`, `g`) e símbolos (`%`)  
 
 ---
 
-## 6️⃣ STA4 – Padronização Textual
-**Legenda:**  
-Aplica **`TRIM`** para remover espaços extras e **`INITCAP`** para padronizar maiúsculas/minúsculas em `name`, `product`, `category` e `country`. Facilita buscas e comparação de strings.
+## 03 - STA3: Limpeza de Valores Negativos
+![STA3](https://raw.githubusercontent.com/gyamada22/SQL-Cleaning-Challenges/main/Projetos/01_Data_Cleaning/images/sta3.png)
+
+- Colunas numéricas com valores negativos convertidas para `NULL`  
+- Garante integridade dos dados para cálculos e análises futuras  
 
 ---
 
-## 7️⃣ STA5 – Padronização de Valores de Referência
-**Legenda:**  
-- Converte `'None'`, `'null'`, `'N/A'` → `NULL` em `name`  
-- Unifica `country` (`Br`/`Brasil` → `Brazil`)  
-- Corrige categorias escritas de forma inconsistente ou sem acento  
+## 04 - STA4: Padronização Textual
+![STA4](https://raw.githubusercontent.com/gyamada22/SQL-Cleaning-Challenges/main/Projetos/01_Data_Cleaning/images/sta4.png)
 
-Essa etapa garante **padronização semântica** e prepara a tabela para análise final.
-
----
-
-## 8️⃣ Hash Final – Conferência de Duplicadas
-**Legenda:**  
-Gera um **hash para cada linha** (`MD5(CONCAT_WS('/', name, product, price, weight, date))`) e conta duplicadas exatas. Permite identificar registros **idênticos** após todas as transformações e confirma que a limpeza foi bem-sucedida.
+- Aplicação de `TRIM` para remover espaços extras  
+- Uso de `INITCAP` para capitalização correta  
+- Padronização das colunas de texto (`name`, `product`, `category`, `country`)  
 
 ---
 
-## 9️⃣ Tabela Final Pronta
-**Legenda:**  
-Tabela `sta5` finalizada, com todos os dados limpos, tipos corretos, textos padronizados e duplicadas removidas. Pronta para análises e relatórios.
+## 05 - STA5: Padronização de Valores de Referência
+![STA5](https://raw.githubusercontent.com/gyamada22/SQL-Cleaning-Challenges/main/Projetos/01_Data_Cleaning/images/sta5.png)
 
+- Ajustes finais em colunas categóricas e textuais  
+- Normalização de `name` (valores nulos ou placeholders)  
+- Unificação de `country` (`Br`, `Brasil` → `Brazil`)  
+- Correção de `category` com grafias corretas e acentos  
+
+---
+
+## 06 - Hash Final
+![Hash Final](https://raw.githubusercontent.com/gyamada22/SQL-Cleaning-Challenges/main/Projetos/01_Data_Cleaning/images/hashfinal.png)
+
+- Criação de hash MD5 para cada linha (`name`, `product`, `price`, `weight`, `date`)  
+- Verificação de duplicadas finais após toda a limpeza  
+- Garantia de integridade e unicidade das linhas  
+
+---
+
+## 09 - README do Projeto
+![README](https://raw.githubusercontent.com/gyamada22/SQL-Cleaning-Challenges/main/Projetos/01_Data_Cleaning/images/readme.md)
+
+- Documento explicativo das etapas de limpeza  
+- Referência para replicação do processo ou análises futuras  
+- Registro das decisões e transformações aplicadas ao dataset  
