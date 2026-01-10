@@ -38,51 +38,9 @@
 - Ex.: converter gramas → quilogramas, porcentagens → decimal, padronizar casas decimais  
 
 ### 7. Conferência Final
-- Uso de **hash de linha** para validar duplicatas finais e garantir integridade do dataset  
+- Uso de **hash de linha** para validar duplicatas finais e garantir integridade do dataset
+- `MD5(CONCAT_WS('/', col1, col2, col3, ...)) AS row_hash`
 - Permite confirmar que cada registro é único mesmo após todas as padronizações  
-
----
-
-## 🔹 Resumo de Técnicas de Limpeza Utilizadas
-
-Estas são as principais técnicas aplicadas neste projeto, que podem ser reutilizadas em outras limpezas de dados:
-
-### 1. Padronização de valores nulos
-  - Transformar valores inconsistentes ou placeholders em `NULL`:
-```sql  
-CASE 
-    WHEN coluna IN ('', 'None', 'null', 'NULL', 'N/A') THEN NULL 
-    ELSE coluna 
-END AS coluna
-```
-
-### 2. Padronização de texto
-  - Remover espaços extras e capitalizar corretamente:
-```sql 
-INITCAP(TRIM(coluna)) AS coluna
-```
-
-### 3. Remoção de duplicadas
-  - Remover linhas completamente iguais:
-```sql 
-SELECT DISTINCT * FROM tabela
-```
-
-### 4. Conversão de tipos
-  - Converter colunas para tipos adequados:
-```sql 
-TRY_TO_NUMBER(coluna) AS coluna_int
-TRY_TO_DECIMAL(coluna) AS coluna_decimal
-TRY_TO_DATE(coluna) AS coluna_date
-```
-
-### 5. Tratamento de datas inconsistentes
-  - Padronizar diferentes formatos de datas para um único padrão:
-```sql 
-TRY_TO_DATE(REPLACE(REPLACE(order_date, '/', '-'), '.','-')) AS date
-```
-
-
 
 ---
 
@@ -275,5 +233,52 @@ ORDER BY cnt DESC;
 - Criação de hash MD5 para cada linha (`name`, `product`, `price`, `weight`, `date`)  
 - Verificação de duplicadas finais após toda a limpeza  
 - Garantia de integridade e unicidade das linhas  
+
+---
+
+## 🔹 Resumo de Técnicas de Limpeza Utilizadas
+
+Estas são as principais técnicas aplicadas neste projeto, que podem ser reutilizadas em outras limpezas de dados:
+
+### 1. Padronização de valores nulos
+  - Transformar valores inconsistentes ou placeholders em `NULL`:
+```sql  
+CASE 
+    WHEN coluna IN ('', 'None', 'null', 'NULL', 'N/A') THEN NULL 
+    ELSE coluna 
+END AS coluna
+```
+
+### 2. Padronização de texto
+  - Remover espaços extras e capitalizar corretamente:
+```sql 
+INITCAP(TRIM(coluna)) AS coluna
+```
+
+### 3. Remoção de duplicadas
+  - Remover linhas completamente iguais:
+```sql 
+SELECT DISTINCT * FROM tabela
+```
+
+### 4. Conversão de tipos
+  - Converter colunas para tipos adequados:
+```sql 
+TRY_TO_NUMBER(coluna) AS coluna_int
+TRY_TO_DECIMAL(coluna) AS coluna_decimal
+TRY_TO_DATE(coluna) AS coluna_date
+```
+
+### 5. Tratamento de datas inconsistentes
+  - Padronizar diferentes formatos de datas para um único padrão:
+```sql 
+TRY_TO_DATE(REPLACE(REPLACE(order_date, '/', '-'), '.','-')) AS date
+```
+
+### 6. Hash de linha para conferência final
+  - Confere integridade e unicidade do dataset
+```sql 
+TRY_TO_DATE(REPLACE(REPLACE(order_date, '/', '-'), '.','-')) AS date
+```
 
 ---
