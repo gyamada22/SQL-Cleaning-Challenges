@@ -72,6 +72,12 @@
 
 ---
 
+## 🔹 Resumo de Técnicas de Limpeza Utilizadas
+
+Estas são as principais técnicas aplicadas neste projeto, que podem ser reutilizadas em outras limpezas de dados:
+
+---
+
 ## 09 - README do Projeto
 ![README](https://raw.githubusercontent.com/gyamada22/SQL-Cleaning-Challenges/main/Projetos/01_Data_Cleaning/images/readme.md)
 
