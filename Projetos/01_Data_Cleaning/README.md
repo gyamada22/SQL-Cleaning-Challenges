@@ -44,7 +44,7 @@ TRY_TO_DATE(REPLACE(REPLACE(order_date, '/', '-'), '.','-')) AS date
 
 ---
 
-##  Setup Inicial
+##  Setup Inicial - Snowflake
 ![Snowflake Screen](https://raw.githubusercontent.com/gyamada22/SQL-Cleaning-Challenges/main/Projetos/01_Data_Cleaning/images/screen_snowflake.png)
 
 - Configuração do ambiente no Snowflake  
