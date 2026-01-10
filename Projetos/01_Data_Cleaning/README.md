@@ -7,6 +7,9 @@
 - Antes de qualquer etapa prática de limpeza, adoto o seguinte padrão, que serve como guia para manter consistência, rastreabilidade e qualidade dos dados
 - Este padrão pode ser ajustado ou expandido no futuro, à medida que eu aprenda novas técnicas ou enfrente diferentes tipos de datasets.
 
+- O código completo da limpeza, incluindo comentários e inspeções da base , está disponível neste link: [raw_data](https://github.com/gyamada22/SQL-Cleaning-Challenges/blob/main/Projetos/01_Data_Cleaning/raw_data_cleaning.sql).
+
+
 
 ### 1. Entendimento da Base
 - Checar tipos de colunas e colunas nulas ou inúteis para o BI final  
