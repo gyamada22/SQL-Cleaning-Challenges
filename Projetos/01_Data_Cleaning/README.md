@@ -1,6 +1,46 @@
-# Limpeza de Dados - Dataset `vendas_sujas`
+# Limpeza de Dados - Dataset 01
 
 ---
+
+## 🔹 Padrão de Limpeza de Dados Utilizado
+
+Antes de qualquer etapa prática de limpeza, adoto o seguinte padrão, que serve como guia para manter consistência, rastreabilidade e qualidade dos dados:
+
+### 1. Entendimento da Base
+- Checar tipos de colunas e colunas nulas ou inúteis para o BI final  
+- Fazer estatísticas rápidas (`MIN/MAX/MÉDIA`) para entender distribuição de colunas numéricas  
+- Contar valores distintos (`DISTINCT COUNT`) das colunas não numéricas  
+- Documentar observações para guiar etapas posteriores  
+
+### 2. Remoção Inicial de Duplicatas
+- Remover registros **totalmente idênticos** em todas as colunas  
+- Reduz o volume de dados e otimiza o processamento das etapas seguintes  
+
+### 3. Padronização de Colunas
+- Corrigir tipos de dados (ex.: `STRING` → `INT/DECIMAL/DATE`)  
+- Renomear colunas para `snake_case` ou nomes padronizados  
+- Remover espaços e caracteres especiais indesejados (initcap + trim)
+- Padronizar valores nulos (`'', None, NULL, N/A`)  
+- Padronizar datas para um único formato  
+
+### 4. Tratamento de Valores Nulos
+- Avaliar quantidade de nulos por coluna  
+- Decidir se será preenchido com `NULL`, média, moda ou outro valor adequado  
+- Depende do impacto na análise ou BI final  
+
+### 5. Remoção Secundária de Duplicatas
+- Após padronização de valores e colunas, remover duplicatas que estavam "disfarçadas"  
+
+### 6. Normalização de Dados
+- Tornar os dados **comparáveis e modeláveis** para BI ou análise  
+- Ex.: converter gramas → quilogramas, porcentagens → decimal, padronizar casas decimais  
+
+### 7. Conferência Final
+- Uso de **hash de linha** para validar duplicatas finais e garantir integridade do dataset  
+- Permite confirmar que cada registro é único mesmo após todas as padronizações  
+
+---
+
 ## 🔹 Resumo de Técnicas de Limpeza Utilizadas
 
 Estas são as principais técnicas aplicadas neste projeto, que podem ser reutilizadas em outras limpezas de dados:
