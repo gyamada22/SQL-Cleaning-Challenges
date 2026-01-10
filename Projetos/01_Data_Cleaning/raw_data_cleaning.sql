@@ -25,7 +25,7 @@ CREATE OR REPLACE TABLE treino_limpeza.raw.vendas_sujas (
 
 INSERT INTO treino_limpeza.raw.vendas_sujas VALUES
 ('011',' Lucas Pereira ','TV','Eletronicos','2025-01-11','Brazil','1','2500','5%','12kg'),
-('011',' Lucas Pereira ','TV','Eletronicos','2025-01-11','Brazil','1','2500','5%','12kg'), -- duplicado perfeito
+('011',' Lucas Pereira ','TV','Eletronicos','2025-01-11','Brazil','1','2500','5%','12kg'), 
 ('012','None','Geladeira','Eletrodomésticos','11/01/2025','BR','1','3500.90','0.1','60 KG'),
 ('013',NULL,'Fogão','eletrodomesticos','2025/01/12','Brasil','2','1800,00','10%','45kg'),
 ('014','  ','Liquidificador','Cozinha','2025.01.12','brasil','1','250','NULL','2kg'),
@@ -43,7 +43,7 @@ INSERT INTO treino_limpeza.raw.vendas_sujas VALUES
 ('026','Carlos','Monitor','Eletrônicos','17/01/2025','Brasil','1','1200','None','3000 g'),
 ('027','NULL','Impressora','Escritório','2025-01-18','BR','1','900','5%','8kg'),
 ('028','Renata','Impressora','Escritorio','18-01-2025','Brazil','1','900','0.05','8000g'),
-('029','Renata','Impressora','Escritório','2025-01-18','BR','1','900','5%','8 KG'), -- duplicata disfarçada
+('029','Renata','Impressora','Escritório','2025-01-18','BR','1','900','5%','8 KG'), 
 ('030','Felipe','Câmera','Eletronicos','2025/01/19','br','1','2300,50','10%','1kg'),
 ('031','Felipe','Câmera','Eletrônicos','2025-01-19','BR','1','2300.50','0.1','1000 g'),
 ('032','Amanda','Tripé','Acessorios','2025-01-20','Brazil','3','150','5%','500g'),
