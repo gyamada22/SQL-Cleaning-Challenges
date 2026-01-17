@@ -1,6 +1,6 @@
-# Limpeza de Dados 1 - Dataset - 09-01-2026
+# Limpeza de Dados 1 
 
-##Introdução
+## Introdução
 
 Este projeto de Limpeza de Dados 1 faz parte de uma série de desafios para **praticar SQL avançado** em **ambiente cloud Snowflake**, com foco em transformar uma tabela de vendas bruta, repleta de erros de preenchimento e inconsistências de formatação, em um dataset confiável e padronizado.
 
