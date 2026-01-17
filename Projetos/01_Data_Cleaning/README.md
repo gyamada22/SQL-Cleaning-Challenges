@@ -1,49 +1,42 @@
 # Limpeza de Dados 1 - Dataset - 09-01-2026
 
+##Introdução
+
+Este projeto de Limpeza de Dados 1 faz parte de uma série de desafios para **praticar SQL avançado** em **ambiente cloud Snowflake**, com foco em transformar uma tabela de vendas bruta, repleta de erros de preenchimento e inconsistências de formatação, em um dataset confiável e padronizado.
+
+O processo envolveu inspeção de tipos de dados, padronização textual, tratamento de datas em múltiplos formatos, conversão de colunas para tipos semânticos corretos (DATE, DECIMAL, INT), substituição de placeholders inválidos por NULL e normalização de unidades. Além disso, foram aplicadas técnicas de remoção de duplicatas e validação de integridade por hash, garantindo que cada registro mantido fosse o mais completo e correto possível.
+
+O resultado é um dataset limpo e consistente, pronto para análises em BI ou relatórios, consolidando habilidades de manipulação de dados e boas práticas em Snowflake.
+
 ---
+##  Padrão de Limpeza de Dados Utilizado
 
-## 🔹 Padrão de Limpeza de Dados Utilizado
+Este guia serve como padrão para manter a consistência, rastreabilidade e qualidade dos dados. O objetivo é transformar dados brutos e inconsistentes em uma base modelável para BI.
 
-- Antes de qualquer etapa prática de limpeza, adoto o seguinte padrão, que serve como guia para manter consistência, rastreabilidade e qualidade dos dados
-- Este padrão pode ser ajustado ou expandido no futuro, à medida que eu aprenda novas técnicas ou enfrente diferentes tipos de datasets.
-
-- O código completo da limpeza, incluindo comentários e inspeções da base , está disponível neste link: [raw_data](https://github.com/gyamada22/SQL-Cleaning-Challenges/blob/main/Projetos/01_Data_Cleaning/raw_data_cleaning.sql).
-
-
+- O código completo da limpeza está disponível no repositório: [raw_data](https://github.com/gyamada22/SQL-Cleaning-Challenges/blob/main/Projetos/01_Data_Cleaning/raw_data_cleaning.sql).
 
 ### 1. Entendimento da Base
-- Checar tipos de colunas e colunas nulas ou inúteis para o BI final  
-- Fazer estatísticas rápidas (`MIN/MAX/MÉDIA`) para entender distribuição de colunas numéricas  
-- Contar valores distintos (`DISTINCT COUNT`) das colunas não numéricas  
-- Documentar observações para guiar etapas posteriores  
+- Inspeção de tipos de dados e identificação de colunas nulas ou irrelevantes.
+- Execução de estatísticas descritivas (`MIN`, `MAX`, `AVG`) para entender a distribuição numérica.
+- Análise de cardinalidade (`DISTINCT COUNT`) em colunas categóricas.
 
 ### 2. Remoção Inicial de Duplicatas
-- Remover registros **totalmente idênticos** em todas as colunas  
-- Reduz o volume de dados e otimiza o processamento das etapas seguintes, especialmente em bases de grande porte.
+- Utilização de `DISTINCT` para eliminar registros 100% idênticos, otimizando o volume de dados para as etapas seguintes.
 
-### 3. Padronização de Colunas
-- Corrigir tipos de dados (ex.: `STRING` → `INT/DECIMAL/DATE`)  
-- Renomear colunas para `snake_case` ou nomes padronizados  
-- Remover espaços e caracteres especiais indesejados (`INITCAP` + `TRIM`)
-- Padronizar valores nulos (`'', None, NULL, N/A`)  
-- Padronizar datas para um único formato  
+### 3. Padronização de Colunas e Tipos
+- **Conversão:** Alteração de `STRING` para tipos semânticos corretos (`DATE`, `DECIMAL`, `INT`).
+- **Formatação:** Aplicação de `INITCAP` e `TRIM` para remover ruídos textuais e padronizar a capitalização.
+- **Datas:** Unificação de formatos variados para o padrão ISO.
 
-### 4. Tratamento de Valores Nulos
-- Avaliar quantidade de nulos por coluna  
-- Decidir se será preenchido com `NULL`, média, moda ou outro valor adequado  
-- Depende do impacto na análise ou BI final  
+### 4. Tratamento de Nulos e Negativos
+- Substituição de placeholders de texto (ex: `'N/A'`, `'None'`) por `NULL`.
+- Invalidação de valores inconsistentes (negativos em colunas de quantidade ou preço).
 
-### 5. Remoção Secundária de Duplicatas
-- Após padronização de valores e colunas, remover duplicatas que estavam "disfarçadas"  
+### 5. Normalização de Unidades
+- Conversão de métricas para uma unidade comum (ex: gramas para quilogramas ou vice-versa) para permitir cálculos agregados precisos.
 
-### 6. Normalização de Dados
-- Tornar os dados **comparáveis e modeláveis** para BI ou análise  
-- Ex.: converter gramas → quilogramas, porcentagens → decimal, padronizar casas decimais  
-
-### 7. Conferência Final
-- Uso de **hash de linha** para validar duplicatas finais e garantir integridade do dataset
-- `MD5(CONCAT_WS('/', col1, col2, col3, ...)) AS row_hash`
-- Permite confirmar que cada registro é único mesmo após todas as padronizações  
+### 6. Conferência Final (Hash de Integridade)
+- Criação de um **Hash de Linha** via `MD5` para garantir que, após todas as transformações, cada registro no dataset final seja único e íntegro.
 
 ---
 ##  Setup Inicial - Snowflake
