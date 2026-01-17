@@ -221,7 +221,7 @@ Aplicação final das regras de negócio, removendo registros que, mesmo após a
 
 ---
 
-##  Resumo de Técnicas Utilizadas
+##  Resumo de Técnicas Novas Utilizadas
 
 1. **COALESCE para Datas:** Essencial para bases com preenchimento manual onde o padrão de data varia entre linhas.
 2. **Regex para Preços:** `REGEXP_LIKE` ajuda a garantir que a conversão decimal não ignore os pontos de milhar.
