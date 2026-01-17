@@ -1,8 +1,10 @@
-# Limpeza de Dados 2 - Dataset - 17-01-2026
+# Limpeza de Dados 2 - Dataset
 
 ## Introdução
 
-Este projeto de Limpeza de Dados 2 tem como objetivo praticar SQL avançado em um ambiente cloud Snowflake, transformando uma tabela de vendas bruta, cheia de inconsistências e duplicatas parciais, em um dataset limpo e padronizado, pronto para análise. O processo envolveu normalização de formatos de data, tratamento de preços e pesos com unidades variadas, padronização textual, conversão de placeholders inválidos para NULL e aplicação de uma lógica de pontuação (scoring) para deduplicação inteligente, garantindo que a linha mais completa fosse mantida.
+Este projeto de Limpeza de Dados 2 tem como objetivo praticar **SQL avançado** em um **ambiente cloud Snowflake**, transformando uma tabela de vendas bruta, cheia de inconsistências e duplicatas parciais, em um dataset limpo e padronizado, pronto para análise. 
+
+O processo envolveu normalização de formatos de data, tratamento de preços e pesos com unidades variadas, padronização textual, conversão de placeholders inválidos para NULL e aplicação de uma lógica de pontuação (scoring) para deduplicação inteligente, garantindo que a linha mais completa fosse mantida.
 
 O resultado é um dataset final confiável e consistente, permitindo análises mais precisas e consolidando habilidades de manipulação de dados em SQL no Snowflake.
 
