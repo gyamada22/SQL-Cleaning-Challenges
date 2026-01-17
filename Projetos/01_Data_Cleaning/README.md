@@ -46,13 +46,15 @@
 - Permite confirmar que cada registro é único mesmo após todas as padronizações  
 
 ---
-
 ##  Setup Inicial - Snowflake
 ![Snowflake Screen](https://raw.githubusercontent.com/gyamada22/SQL-Cleaning-Challenges/main/Projetos/01_Data_Cleaning/images/screen_snowflake.png)
 
 - Configuração do ambiente no Snowflake  
 - Definição de `ROLE` e `WAREHOUSE`  
 - Criação de `DATABASE` e `SCHEMA`  
+
+### Tabela Bruta (Raw)
+![Raw Table](./images/01Raw_Table.png)
 
 ---
 
