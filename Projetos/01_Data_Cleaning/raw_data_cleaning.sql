@@ -1,5 +1,3 @@
-# Limpeza de Dados 
-
 ## Setup inicial
 
 USE ROLE SYSADMIN;
@@ -58,7 +56,6 @@ INSERT INTO treino_limpeza.raw.vendas_sujas VALUES
 ('041',NULL,'Mousepad','Periféricos','24/01/2025','BR','1','50','0.05','0.05kg');
 
 SELECT * FROM treino_limpeza.raw.vendas_sujas;
-SELECT TOP 100 * FROM treino_limpeza.raw.vendas_sujas;
 
 WITH qwe AS (
     SELECT COUNT(*) cnt, order_id
